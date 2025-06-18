@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -8,7 +9,7 @@
  * - SeparateAudioOutput - The return type for the separateAudio function.
  */
 
-import {ai} from '@/ai/genkit';
+import {ai}from '@/ai/genkit';
 import {z} from 'genkit';
 
 const SeparateAudioInputSchema = z.object({
@@ -25,12 +26,12 @@ const SeparateAudioOutputSchema = z.object({
     .string()
     .describe(
       'The separated vocal track as a data URI (Base64 encoded with MIME type).'
-    ),
+    ).optional(),
   instrumentalTrackDataUri: z
     .string()
     .describe(
       'The separated instrumental track as a data URI (Base64 encoded with MIME type).'
-    ),
+    ).optional(),
 });
 export type SeparateAudioOutput = z.infer<typeof SeparateAudioOutputSchema>;
 
